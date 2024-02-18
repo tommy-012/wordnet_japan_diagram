@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-require "wordnet_japan_diagram"
+require 'wordnet_japan_diagram'
+
+WordnetJapanDiagram::CLI.execute
