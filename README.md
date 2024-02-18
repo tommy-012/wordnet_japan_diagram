@@ -2,7 +2,9 @@
 
 Draw a diagram of [Japanese WordNet](https://bond-lab.github.io/wnja/jpn/index.html) about the hypernyms and hyponyms of the search word.
 
-TODO: diagram
+example: search プログラミング
+
+![wordnet_japan_diagram_20240218193942](https://github.com/tommy-012/wordnet_japan_diagram/assets/46615665/d5c58962-f1e4-4174-9a9f-47407b72f3e1)
 
 ## Installation
 
@@ -36,7 +38,7 @@ The diagram name is `wordnet_japan_diagram_[%Y%m%d%H%M%S].png`.
 
 ※ If you want to specify the diagram path, use `--output_diagram_path` option.
 
-TODO: diagram
+![wordnet_japan_diagram_20240218193545](https://github.com/tommy-012/wordnet_japan_diagram/assets/46615665/afbe25cd-2c3b-4662-a1d0-4bc16517b6a0)
 
 ### 4. As needed, use options for the command
 ```
