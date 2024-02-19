@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "Draw a diagram of Japanese WordNet about the hypernyms and hyponyms of the search word."
   spec.homepage = "https://github.com/tommy-012/wordnet_japan_diagram"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 3.1.4"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/tommy-012/wordnet_japan_diagram"
