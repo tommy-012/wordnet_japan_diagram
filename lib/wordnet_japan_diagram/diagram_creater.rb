@@ -17,8 +17,8 @@ module WordnetJapanDiagram
       end
 
       @graph_viz.output(
-        file_type: File.extname(@options[:output_file_path]).delete('.').to_sym,
-        file_path: @options[:output_file_path]
+        file_type: File.extname(@options[:output_diagram_path]).delete('.').to_sym,
+        file_path: @options[:output_diagram_path]
       )
     end
 

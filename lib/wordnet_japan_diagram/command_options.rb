@@ -15,7 +15,7 @@ module WordnetJapanDiagram
     def diagram_creater_options
       {
         search_word: @options[:search_word],
-        output_file_path: @options[:output_file_path],
+        output_diagram_path: @options[:output_diagram_path],
         node_contents: @options[:node_contents],
         height_from_target: @options[:height_from_target].nil? ? nil : @options[:height_from_target].to_i,
         depth_from_target: @options[:depth_from_target].nil? ? nil : @options[:depth_from_target].to_i,

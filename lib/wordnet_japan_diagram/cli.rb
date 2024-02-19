@@ -17,20 +17,22 @@ Choice.options do
   header 'Specific options:'
 
   option :wordnet_japan_db_file_path do
-    long '--wordnet_japan_db_file_path=PATH'
-    desc 'Sets wordnet japan db file path'
+    long '--wordnet_japan_db_file_path=text'
+    desc "Sets wordnet japan db file path\n" \
+         '                                     default: ./wnjpn.db'
     default 'wnjpn.db'
   end
 
   option :search_word, required: true do
-    long '--search_word=WORD'
+    long '--search_word=text'
     desc '[Required] Sets japanese word to search'
     validate /\p{Hiragana}+|\p{Katakana}+|\p{Han}+/
   end
 
   option :graph_rankdir do
-    long '--graph_rankdir=DIR'
-    desc "Sets direction of graph layout\n"\
+    long '--graph_rankdir=[TB|BT|LR|RL]'
+    desc "Sets direction of graph layout\n" \
+         "                                     default: BT\n" \
          "                                     TB: Top to bottom\n" \
          "                                     BT: Bottom to top\n" \
          "                                     LR: Left to right\n" \
@@ -41,7 +43,8 @@ Choice.options do
 
   option :node_contents do
     long '--node_contents=[synset|synset_and_words]'
-    desc "Sets node contents\n"
+    desc "Sets node contents\n" \
+         '                                     default: synset_and_words'
     default 'synset_and_words'
     valid %w(synset synset_and_words)
   end
@@ -58,9 +61,10 @@ Choice.options do
     validate /\d+/
   end
 
-  option :output_file_path do
-    long '--output_file_path=PATH'
-    desc 'Sets output file path'
+  option :output_diagram_path do
+    long '--output_diagram_path=text'
+    desc "Sets output diagram path (The file extension is either .pdf, .png, .jpg, or .svg)\n" \
+         '                                     default: wordnet_japan_diagram_[%Y%m%d%H%M%S].png'
     default "wordnet_japan_diagram_#{Time.current.strftime('%Y%m%d%H%M%S')}.png"
     validate /[pdf|png|jpg|svg]$/
   end
