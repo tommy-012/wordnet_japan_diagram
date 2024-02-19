@@ -1,8 +1,8 @@
 # WordnetJapanDiagram
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/wordnet_japan_diagram`. To experiment with that code, run `bin/console` for an interactive prompt.
+Draw a diagram of [Japanese WordNet](https://bond-lab.github.io/wnja/jpn/index.html) about the hypernyms and hyponyms of the search word.
 
-TODO: Delete this and the text above, and describe your gem
+TODO: diagram
 
 ## Installation
 
@@ -16,7 +16,53 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+### 1. Prepare Japanese WordNet SQLite3 file
+Download [Japanese WordNet SQLite3 file](https://github.com/bond-lab/wnja/releases/download/v1.1/wnjpn.db.gz), unzip the file.
+
+### 2. Execute the command using the above file
+If the above file path is `./tmp/wnjpn.db`, specify the path with `--wordnet_japan_db_file_path` option.
+
+```
+$ wordnet_japan_diagram --wordnet_japan_db_file_path ./tmp/wnjpn.db --search_word サウナ
+
+# If you were using bundler
+$ bundle exec wordnet_japan_diagram --wordnet_japan_db_file_path ./tmp/wnjpn.db --search_word サウナ
+```
+
+### 3. Check the diagram that is the result of the command execution
+The diagram is located under the same path as the command execution.
+
+The diagram name is `wordnet_japan_diagram_[%Y%m%d%H%M%S].png`.
+
+※ If you want to specify the diagram path, use `--output_diagram_path` option.
+
+TODO: diagram
+
+### 4. As needed, use options for the command
+```
+$ wordnet_japan_diagram --help
+Usage: wordnet_japan_diagram
+
+Specific options:
+        --wordnet_japan_db_file_path=text
+                                     Sets wordnet japan db file path
+                                     default: ./wnjpn.db
+        --search_word=text           [Required] Sets japanese word to search
+        --graph_rankdir=[TB|BT|LR|RL]Sets direction of graph layout
+                                     default: BT
+                                     TB: Top to bottom
+                                     BT: Bottom to top
+                                     LR: Left to right
+                                     RL: Right to left
+        --node_contents=[synset|synset_and_words]
+                                     Sets node contents
+                                     default: synset_and_words
+        --height_from_target=number  Sets height from target node
+        --depth_from_target=number   Sets depth from target node
+        --output_diagram_path=text   Sets output diagram path (The file extension is either .pdf, .png, .jpg, or .svg)
+                                     default: wordnet_japan_diagram_[%Y%m%d%H%M%S].png
+        --help                       Show this options information
+```
 
 ## Development
 

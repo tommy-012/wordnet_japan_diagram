@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["lonnlilonn@googlemail.com"]
 
   spec.summary = "Draw a diagram of Japanese WordNet."
-  spec.description = "Draw a diagram of Japanese WordNet for the hypernyms and hyponyms of the search word."
+  spec.description = "Draw a diagram of Japanese WordNet about the hypernyms and hyponyms of the search word."
   spec.homepage = "https://github.com/tommy-012/wordnet_japan_diagram"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
