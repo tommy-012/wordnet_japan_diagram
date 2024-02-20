@@ -43,7 +43,7 @@ The diagram name is `wordnet_japan_diagram_[%Y%m%d%H%M%S].png`.
 ### 4. As needed, use options for the command
 ```
 $ wordnet_japan_diagram --help
-Usage: wordnet_japan_diagram
+Usage: wordnet_japan_diagram [-v]
 
 Specific options:
         --wordnet_japan_db_file_path=text
@@ -63,7 +63,10 @@ Specific options:
         --depth_from_target=number   Sets depth from target node
         --output_diagram_path=text   Sets output diagram path (The file extension is either .pdf, .png, .jpg, or .svg)
                                      default: wordnet_japan_diagram_[%Y%m%d%H%M%S].png
+
+Common options:
         --help                       Show this options information
+    -v, --version                    Show version and quit.
 ```
 
 ## Development
