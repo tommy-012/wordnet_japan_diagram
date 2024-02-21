@@ -61,9 +61,23 @@ Choice.options do
     validate /[pdf|png|jpg|svg]$/
   end
 
+  separator ''
+  separator 'Common options: '
+
   option :help do
     long '--help'
     desc 'Show this options information'
+  end
+
+  option :version do
+    short '-v'
+    long '--version'
+    desc 'Show version and quit.'
+    action do
+      require 'wordnet_japan_diagram/version'
+      puts WordnetJapanDiagram::BANNER
+      exit
+    end
   end
 end
 
