@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'graph_viz'
+require_relative "graph_viz"
 
 module WordnetJapanDiagram
   class DiagramCreater
@@ -10,25 +10,22 @@ module WordnetJapanDiagram
     end
 
     def create
-      word = WordnetJapan::Word.find_by(lemma: @options[:search_word], pos: 'n')
+      draw_diagram
 
-      word.synsets.each do |synset|
-        draw(synset)
-      end
-
-      @graph_viz.output(
-        file_type: File.extname(@options[:output_diagram_path]).delete('.').to_sym,
-        file_path: @options[:output_diagram_path]
-      )
+      output_diagram
     end
 
     private
 
-    def draw(synset)
-      draw_target(synset)
+    def draw_diagram
+      word = WordnetJapan::Word.find_by(lemma: @options[:search_word], pos: "n")
 
-      draw_hype(synset, @options[:height_from_target])
-      draw_hypo(synset, @options[:depth_from_target])
+      word.synsets.each do |synset|
+        draw_target(synset)
+
+        draw_hype(synset, @options[:height_from_target])
+        draw_hypo(synset, @options[:depth_from_target])
+      end
     end
 
     def draw_target(synset)
@@ -36,8 +33,9 @@ module WordnetJapanDiagram
     end
 
     def draw_hype(synset, height)
-      dest_synsets = synset.synlinks.where(link: '上位語').map(&:dest_synset)
+      dest_synsets = synset.synlinks.where(link: "上位語").map(&:dest_synset)
 
+      # NOTE: オプション指定がない場合は height が nil になる
       return if (height.present? && height <= 0) || dest_synsets.blank?
 
       dest_synsets.each do |dest_synset|
@@ -49,8 +47,9 @@ module WordnetJapanDiagram
     end
 
     def draw_hypo(synset, depth)
-      dest_synsets = synset.synlinks.where(link: '下位語').map(&:dest_synset)
+      dest_synsets = synset.synlinks.where(link: "下位語").map(&:dest_synset)
 
+      # NOTE: オプション指定がない場合は depth が nil になる
       return if (depth.present? && depth <= 0) || dest_synsets.blank?
 
       dest_synsets.each do |dest_synset|
@@ -62,13 +61,20 @@ module WordnetJapanDiagram
     end
 
     def node_contents(synset)
-      synset_def = synset.synset_defs.where(lang: 'jpn').first&.def
+      synset_def = synset.synset_defs.where(lang: "jpn").first&.def
 
-      return synset_def if @options[:node_contents] == 'synset'
+      return synset_def if @options[:node_contents] == "synset"
 
-      words = synset.words.where(pos: "noun").map(&:lemma).join(',')
+      words = synset.words.where(pos: "noun").map(&:lemma).join(",")
 
       "#{synset_def}\n(#{words})"
+    end
+
+    def output_diagram
+      @graph_viz.output(
+        file_type: File.extname(@options[:output_diagram_path]).delete(".").to_sym,
+        file_path: @options[:output_diagram_path]
+      )
     end
   end
 end
