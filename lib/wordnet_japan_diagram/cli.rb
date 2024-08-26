@@ -1,14 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'command_options'
-require_relative 'diagram_creater'
+require_relative "command_options"
+require_relative "diagram_creater"
 
-require_relative 'wordnet_japan/database'
-require_relative 'wordnet_japan/sense'
-require_relative 'wordnet_japan/synlink'
-require_relative 'wordnet_japan/synset'
-require_relative 'wordnet_japan/synset_def'
-require_relative 'wordnet_japan/word'
+require "wordnet_japan"
 
 module WordnetJapanDiagram
   class CLI
@@ -24,13 +19,14 @@ module WordnetJapanDiagram
 
     def execute
       connect_database
+
       create_diagram
     end
 
     private
 
     def connect_database
-      WordnetJapan::Database.connect(@command_options)
+      WordnetJapan::Database.connect(database: @command_options.wordnet_japan_db_options[:database])
     end
 
     def create_diagram

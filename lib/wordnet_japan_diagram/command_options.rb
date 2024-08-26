@@ -18,7 +18,7 @@ module WordnetJapanDiagram
         output_diagram_path: @options[:output_diagram_path],
         node_contents: @options[:node_contents],
         height_from_target: @options[:height_from_target].nil? ? nil : @options[:height_from_target].to_i,
-        depth_from_target: @options[:depth_from_target].nil? ? nil : @options[:depth_from_target].to_i,
+        depth_from_target: @options[:depth_from_target].nil? ? nil : @options[:depth_from_target].to_i
       }
     end
 

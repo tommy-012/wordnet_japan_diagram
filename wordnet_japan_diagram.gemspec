@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.name = "wordnet_japan_diagram"
   spec.version = WordnetJapanDiagram::VERSION
   spec.authors = ["tommy-012"]
-  spec.email = ["lonnlilonn@googlemail.com"]
+  spec.email = ["lonnlilonn@gmail.com"]
 
   spec.summary = "Draw a diagram of Japanese WordNet."
   spec.description = "Draw a diagram of Japanese WordNet about the hypernyms and hyponyms of the search word."
@@ -35,8 +35,7 @@ Gem::Specification.new do |spec|
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
 
-  spec.add_dependency "activerecord", "~> 7.0.4"
-  spec.add_dependency "sqlite3", "~> 1.5.4"
-  spec.add_dependency "ruby-graphviz", "~> 1.2.5"
   spec.add_dependency "choice", "~> 0.2.0"
+  spec.add_dependency "ruby-graphviz", "~> 1.2.5"
+  spec.add_dependency "wordnet_japan"
 end
