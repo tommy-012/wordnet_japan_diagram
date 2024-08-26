@@ -1,8 +1,8 @@
 # WordnetJapanDiagram
 
-Draw a diagram of [Japanese WordNet](https://bond-lab.github.io/wnja/jpn/index.html) about the hypernyms and hyponyms of the search word.
+[日本語 WordNet](https://bond-lab.github.io/wnja/jpn/index.html)を利用して、検索キーワードの上位語・下位語を可視化します。
 
-example: search プログラミング
+例えば、「プログラミング」を可視化した結果は以下になります。
 
 ![wordnet_japan_diagram_20240218193942](https://github.com/tommy-012/wordnet_japan_diagram/assets/46615665/d5c58962-f1e4-4174-9a9f-47407b72f3e1)
 
@@ -18,11 +18,15 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-### 1. Prepare Japanese WordNet SQLite3 file
-Download [Japanese WordNet SQLite3 file](https://github.com/bond-lab/wnja/releases/download/v1.1/wnjpn.db.gz), unzip the file.
+### 1. 「日本語 WordNet（SQLite3）」を用意します
+[Japanese WordNet SQLite3 file](https://github.com/bond-lab/wnja/releases/download/v1.1/wnjpn.db.gz) をダウンロードして解凍します。
 
-### 2. Execute the command using the above file
-If the above file path is `./tmp/wnjpn.db`, specify the path with `--wordnet_japan_db_file_path` option.
+解凍したファイルを適切なパスに移動します。
+
+### 2. コマンドを実行します
+「日本語 WordNet（SQLite3）」のデフォルトパスは、`./wnjpn.db` になります。
+
+もしパスを指定したい場合は、`--wordnet_japan_db_file_path` オプションで指定します。
 
 ```
 $ wordnet_japan_diagram --wordnet_japan_db_file_path ./tmp/wnjpn.db --search_word サウナ
@@ -31,16 +35,16 @@ $ wordnet_japan_diagram --wordnet_japan_db_file_path ./tmp/wnjpn.db --search_wor
 $ bundle exec wordnet_japan_diagram --wordnet_japan_db_file_path ./tmp/wnjpn.db --search_word サウナ
 ```
 
-### 3. Check the diagram that is the result of the command execution
-The diagram is located under the same path as the command execution.
+### 3. コマンド実行結果を確認します
+可視化した画像は、コマンド実行したパス配下に作られます。
 
-The diagram name is `wordnet_japan_diagram_[%Y%m%d%H%M%S].png`.
+もしパスを指定したい場合は、`--output_diagram_path` オプションで指定します。
 
-※ If you want to specify the diagram path, use `--output_diagram_path` option.
+画像の名前フォーマットは、`wordnet_japan_diagram_[%Y%m%d%H%M%S].png` になります。
 
 ![wordnet_japan_diagram_20240218193545](https://github.com/tommy-012/wordnet_japan_diagram/assets/46615665/afbe25cd-2c3b-4662-a1d0-4bc16517b6a0)
 
-### 4. As needed, use options for the command
+### 4. (必要に応じて) 他オプションを確認できます
 ```
 $ wordnet_japan_diagram --help
 Usage: wordnet_japan_diagram [-v]
